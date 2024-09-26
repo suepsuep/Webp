@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEEK4</title>    
+
+    <script>
+        function register() {
+            this.nStudent++;
+        }
+        function unregister() {
+            this.nStudent--;
+        }
+        function getStudentCount() {
+            return this.nStudent;
+        }
+        let Property=new Object();
+        Property.korName = "웹프로그래밍";
+        Property.engName = "Web Programming";
+        Property.classCode = "V024003";
+        Property.nStudent=0;
+        Property.register=register;
+        Property.unregister=unregister;
+        Property.getStudentCount=getStudentCount;
+    </script>
+    <script>
+        let Property2 = {
+            korName : "클라우드컴퓨팅",
+            engName : "Cloud Computing",
+            classCode : "V024003",
+            nStudent : 0,
+
+            register : function() { this.nStudent++; },
+            unregister : function() { this.nStudent--; },
+            getStudentCount : function() { return this.nStudent; }
+        };
+    </script>
+    <script>
+        function Property3(korName, engName, classCode, nStudent) {
+            this.korName=korName;
+            this.engName=engName;
+            this.classCode=classCode;
+            this.nStudent=nStudent;
+
+            this.register = function() { this.nStudent++; }
+            this.unregister = function() { this.nStudent--; }
+            this.getStudentCount = function() { return this.nStudent; }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        document.write("<h3>1. 직접 객체 만들기</h3>");
+        document.write("교과목 이름 = "+Property.korName+"<br>");
+        document.write("교과목 영문 이름 = "+Property.engName+"<br>");
+        document.write("등록 학생 수 = "+Property.nStudent+"<br>");
+        Property.register();
+        document.write("after register, 등록 학생 수 = "+Property.nStudent+"<br>");
+    </script>
+    <hr>
+    <script>
+        document.write("<h3>2. 리터럴 표기법</h3>");
+        document.write("교과목 이름 = "+Property2.korName+"<br>");
+        document.write("교과목 영문 이름 = "+Property2.engName+"<br>");
+        document.write("등록 학생 수 = "+Property2.nStudent+"<br>");
+        Property2.register();
+        document.write("after register, 등록 학생 수 = "+Property2.nStudent+"<br>");
+    </script>
+     <hr>
+     <script>
+        let property3 = new Property3("프로그래밍언어론", "Programming Langauges", "V024003", 0);
+         document.write("<h3>3. Prototype</h3>");
+         document.write("교과목 이름 = "+property3.korName+"<br>");
+         document.write("교과목 영문 이름 = "+property3.engName+"<br>");
+         document.write("등록 학생 수 = "+property3.nStudent+"<br>");
+         property3.register();
+         document.write("after register, 등록 학생 수 = "+property3.nStudent+"<br>");
+     </script>
+
+</body>
+</html>
