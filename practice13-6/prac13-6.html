@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제 13-6</title>
+    <script>
+        let addWorker = new Worker("mul.js")
+        function send() {
+            let parameters = {
+                from : document.getElementById("x").value,
+                to : document.getElementById("y").value
+            };
+            addWorker.postMessage(parameters);           
+        }
+
+        addWorker.onmessage = function(e) {
+            document.getElementById("res").value = e.data;
+        }
+    </script>
+</head>
+<body>
+    <h3>곱셈하기</h3>
+    <hr>
+    <input id="x" type="text" size="10">
+     x 
+    <input id="y" type="text" size="10">
+    <button onclick="send()">곱하기</button>
+    <input id="res" type="text" size="10">
+</body>
+</html>
